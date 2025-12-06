@@ -55,13 +55,11 @@ jobs:
         run: npm run test:e2e
         env:
           NODE_ENV: test
-          DB_HOST: localhost
-          DB_PORT: 5432
-          DB_USERNAME: postgres
-          DB_PASSWORD: postgres
-          DB_DATABASE: code_inbound_test
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/code_inbound_test
           JWT_SECRET: test-secret-key-for-ci
           JWT_EXPIRATION: 1h
+          JWT_REFRESH_SECRET: test-refresh-secret-key-for-ci
+          JWT_REFRESH_EXPIRATION: 7d
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
