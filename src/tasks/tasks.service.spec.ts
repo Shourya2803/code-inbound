@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { NotFoundException, ForbiddenException } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { Task } from './entities/task.entity';
@@ -13,7 +12,6 @@ import { FilterTaskDto } from './dto/filter-task.dto';
 
 describe('TasksService', () => {
   let service: TasksService;
-  let repository: Repository<Task>;
 
   const mockUser: User = {
     id: 'user-1',
@@ -73,7 +71,6 @@ describe('TasksService', () => {
     }).compile();
 
     service = module.get<TasksService>(TasksService);
-    repository = module.get<Repository<Task>>(getRepositoryToken(Task));
   });
 
   afterEach(() => {

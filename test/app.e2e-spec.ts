@@ -7,7 +7,6 @@ import { AllExceptionsFilter } from './../src/common/filters/all-exceptions.filt
 describe('AppController (e2e)', () => {
   let app: INestApplication;
   let authToken: string;
-  let userId: string;
   let taskId: string;
 
   beforeAll(async () => {
@@ -51,7 +50,6 @@ describe('AppController (e2e)', () => {
           expect(res.body).toHaveProperty('user');
           expect(res.body.user.email).toBe(testUser.email);
           expect(res.body.user).not.toHaveProperty('password');
-          userId = res.body.user.id;
           authToken = res.body.accessToken;
         });
     });
